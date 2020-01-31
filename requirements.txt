@@ -3,5 +3,8 @@ terminaltables
 jinja2
 opinionated-configparser
 filelock
-envtpl
 bash
+psutil
+inotify_simple
+git+https://github.com/metwork-framework/envtpl.git#egg=envtpl
+netifaces
