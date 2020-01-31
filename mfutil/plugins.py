@@ -16,8 +16,8 @@ from opinionated_configparser import OpinionatedConfigParser
 
 RUNTIME_HOME = os.environ.get('MFMODULE_RUNTIME_HOME', '/tmp')
 MFEXT_HOME = os.environ.get('MFEXT_HOME', '/opt/metwork-mfext')
-MFMODULE_LOWERCASE = os.environ['MFMODULE_LOWERCASE']
-MFMODULE = os.environ['MFMODULE']
+MFMODULE_LOWERCASE = os.environ.get('MFMODULE_LOWERCASE', 'mfext')
+MFMODULE = os.environ.get('MFMODULE', 'MFEXT')
 SPEC_TEMPLATE = os.path.join(MFEXT_HOME, "share", "templates", "plugin.spec")
 PLUGIN_NAME_REGEXP = "^[A-Za-z0-9_-]+$"
 
