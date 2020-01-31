@@ -1,0 +1,10 @@
+pipeline:
+  build:
+    image: python:${PYTHON_VERSION}
+    commands:
+      - wget -O /usr/lib/libmfutil.so http://metwork-framework.org/pub/misc/mfutil_c/libmfutil.so
+      - ldd /usr/lib/libmfutil.so
+
+matrix:
+  PYTHON_VERSION:
+    - 3.7-buster
