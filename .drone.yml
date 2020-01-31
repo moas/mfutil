@@ -3,7 +3,13 @@ pipeline:
     image: python:${PYTHON_VERSION}
     commands:
       - wget -O /usr/lib/libmfutil.so http://metwork-framework.org/pub/misc/mfutil_c/libmfutil.so
+      - wget -O /usr/lib/liblayerapi2.so http://metwork-framework.org/pub/misc/mfutil_c/liblayerapi2.so
       - ldd /usr/lib/libmfutil.so
+      - ldd /usr/lib/liblayerapi2.so
+      - mkdir -p /opt/metwork-mfext/share/templates
+      - mkdir -p /opt/metwork-mfext/lib
+      - wget -O /opt/metwork-mfext/share/templates/plugin.spec http://metwork-framework.org/pub/misc/mfutil_c/plugin.spec
+      - wget -O /opt/metwork-mfext/lib/bash_utils.sh http://metwork-framework.org/pub/misc/mfutil_c/bash_utils.sh
       - pip install -r dev-requirements.txt
       - python setup.py develop
       - cd tests && nosetests -s .

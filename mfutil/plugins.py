@@ -15,7 +15,7 @@ from mfutil.layerapi2 import LayerApi2Wrapper
 from opinionated_configparser import OpinionatedConfigParser
 
 RUNTIME_HOME = os.environ.get('MFMODULE_RUNTIME_HOME', '/tmp')
-MFEXT_HOME = os.environ['MFEXT_HOME']
+MFEXT_HOME = os.environ.get('MFEXT_HOME', '/opt/metwork-mfext')
 MFMODULE_LOWERCASE = os.environ['MFMODULE_LOWERCASE']
 MFMODULE = os.environ['MFMODULE']
 SPEC_TEMPLATE = os.path.join(MFEXT_HOME, "share", "templates", "plugin.spec")
