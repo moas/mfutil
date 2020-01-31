@@ -1,0 +1,7 @@
+six
+terminaltables
+jinja2
+opinionated-configparser
+filelock
+envtpl
+bash
