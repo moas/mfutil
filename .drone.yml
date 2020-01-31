@@ -4,6 +4,10 @@ pipeline:
     commands:
       - wget -O /usr/lib/libmfutil.so http://metwork-framework.org/pub/misc/mfutil_c/libmfutil.so
       - ldd /usr/lib/libmfutil.so
+      - pip install -r dev-requirements.txt
+      - python setup.py develop
+      - cd tests && nosetests -s .
+      - flake8 .
 
 matrix:
   PYTHON_VERSION:
