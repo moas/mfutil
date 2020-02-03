@@ -7,7 +7,7 @@ import sys
 from mfutil.plugins import get_plugin_info, MFUtilPluginBaseNotInitialized
 
 DESCRIPTION = "get some information about a plugin"
-MFMODULE_LOWERCASE = os.environ['MFMODULE_LOWERCASE']
+MFMODULE_LOWERCASE = os.environ.get('MFMODULE_LOWERCASE', 'mfext')
 
 
 def main():

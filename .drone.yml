@@ -11,6 +11,7 @@ pipeline:
       - python setup.py develop
       - cd tests && rm -f test_plugins.py && nosetests -s .
       - flake8 .
+      - if test "${PYTHON_VERSION}" != "3.7-buster"; then exit 0; fi
       - pdoc --html mfutil
   publish:
     image: python:${PYTHON_VERSION}

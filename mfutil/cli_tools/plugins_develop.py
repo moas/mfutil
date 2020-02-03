@@ -9,7 +9,7 @@ from mfutil.plugins import develop_plugin, \
 from mfutil.cli import echo_ok, echo_running, echo_nok, echo_bold
 
 DESCRIPTION = "develop a plugin from a directory"
-MFMODULE_LOWERCASE = os.environ['MFMODULE_LOWERCASE']
+MFMODULE_LOWERCASE = os.environ.get('MFMODULE_LOWERCASE', 'mfext')
 
 
 def main():
