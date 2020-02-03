@@ -9,16 +9,20 @@ pipeline:
       - mkdir -p /opt/metwork-mfext/lib
       - pip install -r dev-requirements.txt
       - python setup.py develop
-      - cd tests && rm -f test_plugins.py && nosetests -s .
+      - cd tests && rm -f test_plugins.py && nosetests -s . && cd ..
       - flake8 .
       - if test "${PYTHON_VERSION}" != "3.7-buster"; then exit 0; fi
       - pdoc --html mfutil
+      - ls -alrt
+      - pwd
   publish:
     image: python:${PYTHON_VERSION}
     volumes:
       - /pub:/pub
     commands:
       - if test "${PYTHON_VERSION}" != "3.7-buster"; then exit 0; fi
+      - ls -alrt
+      - pwd
       - rm -Rf /pub/misc/mfutil/doc
       - mkdir -p /pub/misc/mfutil/doc
       - cp -Rf html/* /pub/misc/mfutil/doc/
@@ -28,8 +32,8 @@ pipeline:
 
 matrix:
   PYTHON_VERSION:
-    - 2.7-buster
-    - 3.5-buster
-    - 3.6-buster
+    #    - 2.7-buster
+    #- 3.5-buster
+    #- 3.6-buster
     - 3.7-buster
-    - 3.8-buster
+    #- 3.8-buster
