@@ -23,14 +23,14 @@ pipeline:
       - pwd
       - rm -Rf /pub/misc/mfutil/doc
       - mkdir -p /pub/misc/mfutil/doc/${DRONE_BRANCH}
-      - cp -Rf html/mfutil /pub/misc/mfutil/doc/${DRONE_BRANCH}/
+      - cp -Rf html/mfutil/* /pub/misc/mfutil/doc/${DRONE_BRANCH}/
     when:
       event: push
 
 matrix:
   PYTHON_VERSION:
-    #    - 2.7-buster
-    #- 3.5-buster
-    #- 3.6-buster
+    - 2.7-buster
+    - 3.5-buster
+    - 3.6-buster
     - 3.7-buster
-    #- 3.8-buster
+    - 3.8-buster
