@@ -13,8 +13,6 @@ pipeline:
       - flake8 .
       - if test "${PYTHON_VERSION}" != "3.7-buster"; then exit 0; fi
       - pdoc --html mfutil
-      - ls -alrt
-      - pwd
   publish:
     image: python:${PYTHON_VERSION}
     volumes:
@@ -24,11 +22,10 @@ pipeline:
       - ls -alrt
       - pwd
       - rm -Rf /pub/misc/mfutil/doc
-      - mkdir -p /pub/misc/mfutil/doc
-      - cp -Rf html/* /pub/misc/mfutil/doc/
+      - mkdir -p /pub/misc/mfutil/doc/${DRONE_BRANCH}
+      - cp -Rf html/mfutil /pub/misc/mfutil/doc/${DRONE_BRANCH}/
     when:
       event: push
-      branch: [ master ]
 
 matrix:
   PYTHON_VERSION:
