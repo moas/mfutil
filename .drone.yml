@@ -19,9 +19,7 @@ pipeline:
       - /pub:/pub
     commands:
       - if test "${PYTHON_VERSION}" != "3.7-buster"; then exit 0; fi
-      - ls -alrt
-      - pwd
-      - rm -Rf /pub/misc/mfutil/doc
+      - rm -Rf /pub/misc/mfutil/doc/${DRONE_BRANCH}
       - mkdir -p /pub/misc/mfutil/doc/${DRONE_BRANCH}
       - cp -Rf html/mfutil/* /pub/misc/mfutil/doc/${DRONE_BRANCH}/
     when:
