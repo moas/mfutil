@@ -18,9 +18,9 @@ pipeline:
     volumes:
       - /pub:/pub
     commands:
+      - env |grep DRONE_BRANCH
+      - echo ${DRONE_BRANCH}
       - if test "${PYTHON_VERSION}" != "3.7-buster"; then exit 0; fi
-      - ls -alrt
-      - pwd
       - rm -Rf /pub/misc/mfutil/doc
       - mkdir -p /pub/misc/mfutil/doc/${DRONE_BRANCH}
       - cp -Rf html/mfutil/* /pub/misc/mfutil/doc/${DRONE_BRANCH}/
@@ -29,8 +29,4 @@ pipeline:
 
 matrix:
   PYTHON_VERSION:
-    - 2.7-buster
-    - 3.5-buster
-    - 3.6-buster
     - 3.7-buster
-    - 3.8-buster
