@@ -2,4 +2,4 @@
 flake8
 mock
 nose
-pdoc3
+pdoc3; python_version > '3.0'
