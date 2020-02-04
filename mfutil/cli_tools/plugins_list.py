@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
+import os
 import argparse
 import sys
 import json
-from mfutil.plugins import get_installed_plugins
+from mfutil.plugins import get_installed_plugins, is_plugins_base_initialized
 from terminaltables import SingleTable
+from mfutil.cli import echo_bold
 
 DESCRIPTION = "get the installed plugins list"
+MFMODULE_LOWERCASE = os.environ.get('MFMODULE_LOWERCASE', 'mfext')
 
 
 def main():
@@ -23,6 +26,13 @@ def main():
     if args.json and args.raw:
         print("ERROR: json and raw options are mutually exclusives")
         sys.exit(1)
+    if not is_plugins_base_initialized(args.plugins_base_dir):
+        echo_bold("ERROR: the module is not initialized")
+        echo_bold("       => start it once before installing your plugin")
+        print()
+        print("hint: you can use %s.start to do that" % MFMODULE_LOWERCASE)
+        print()
+        sys.exit(3)
     plugins = get_installed_plugins(plugins_base_dir=args.plugins_base_dir)
     json_output = []
     table_data = []
