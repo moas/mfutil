@@ -16,6 +16,8 @@ import fnmatch
 
 from inotify_simple import flags
 
+from .eval import SandboxedEval
+
 
 class MFUtilException(Exception):
     """Just a custom exception object dedicated for mfutil package."""
@@ -23,6 +25,12 @@ class MFUtilException(Exception):
 
 def __get_logger():
     return logging.getLogger("mfutil")
+
+
+def eval(expr, variables=None):
+    """ Simply evaluate an expresssion """
+    s = SandboxedEval(operators=None, names=variables)
+    return s.eval(expr)
 
 
 def get_unique_hexa_identifier():

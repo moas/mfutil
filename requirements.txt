@@ -8,3 +8,4 @@ psutil
 inotify_simple
 git+https://github.com/metwork-framework/envtpl.git#egg=envtpl
 netifaces
+simpleeval==0.9.10
