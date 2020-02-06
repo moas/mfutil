@@ -28,7 +28,22 @@ def __get_logger():
 
 
 def eval(expr, variables=None):
-    """ Simply evaluate an expresssion """
+    """Evaluate (safely) a python expression (as a string).
+    
+    The eval is done with simpleeval library.
+    
+    Following functions are available (in expressions):
+    
+    - re_match: see match() function of re module
+    - re_imatch: insensitive match() function of re module
+    - fnmatch.fnmatch: fnmatch() function of fnmatch module
+    
+    Args:
+        expr (string): the python expression to eval.
+        variables (dict): if set, inject some variables/values in the expression. 
+        
+    """
+      
     s = SandboxedEval(operators=None, names=variables)
     return s.eval(expr)
 
