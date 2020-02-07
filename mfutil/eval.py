@@ -12,9 +12,9 @@ LOCAL_FUNCTIONS = {
     'fnmatch_fnmatch': fnmatch.fnmatch,
     're_match': re_match,
     're_imatch': re_imatch,
-    'bool': bool,
-    **DEFAULT_FUNCTIONS
+    'bool': bool
 }
+LOCAL_FUNCTIONS.update(DEFAULT_FUNCTIONS)
 
 
 def _partialclass(cls, *args, **kwargs):
