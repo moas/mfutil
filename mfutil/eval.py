@@ -1,6 +1,7 @@
 import re
 import fnmatch
 import functools
+import sys
 
 from simpleeval import EvalWithCompoundTypes, DEFAULT_FUNCTIONS
 
@@ -20,7 +21,11 @@ LOCAL_FUNCTIONS.update(DEFAULT_FUNCTIONS)
 def _partialclass(cls, *args, **kwargs):
 
     class NewCls(cls):
-        __init__ = functools.partialmethod(cls.__init__, *args, **kwargs)
+        if sys.version_info.major >= 3:
+            __init__ = functools.partialmethod(cls.__init__, *args, **kwargs)
+        else:
+            __init__ = functools.partial(cls.__init__, *args, **kwargs)
+
     return NewCls
 
 
