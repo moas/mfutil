@@ -29,7 +29,7 @@ def __get_logger():
 
 def eval(expr, variables=None):
     """ Simply evaluate an expresssion """
-    s = SandboxedEval(operators=None, names=variables)
+    s = SandboxedEval(names=variables)
     return s.eval(expr)
 
 

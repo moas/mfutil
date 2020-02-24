@@ -41,3 +41,9 @@ class TestBasic(unittest.TestCase):
     def test_unsupported_function(self):
         with self.assertRaises(simpleeval.FunctionNotDefined):
             self.t("filter(None, (True, False))", None, (True,))
+
+    def test_bytes_contains(self):
+        self.t("b'1' in (1,2)", None, False)
+
+    def test_bytes_endswith(self):
+        self.t("b'toto.png'.endswith(b'png')", None, True)
