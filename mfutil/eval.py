@@ -30,7 +30,7 @@ class _Eval(EvalWithCompoundTypes):
 
     @staticmethod
     def _eval_bytes(node):
-        return node.s.decode()
+        return node.s
 
 
 def _partialclass(cls, *args, **kwargs):

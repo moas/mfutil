@@ -47,3 +47,9 @@ class TestBasic(unittest.TestCase):
 
     def test_bytes_endswith(self):
         self.t("b'toto.png'.endswith(b'png')", None, True)
+
+    def test_dict(self):
+        self.t("x['foo'] == b'png'", {'x': {'foo': b'png'}}, True)
+
+    def test_bytes_in_variables(self):
+        self.t("x['foo'].startswith(b'png')", {'x': {'foo': b'png'}}, True)
